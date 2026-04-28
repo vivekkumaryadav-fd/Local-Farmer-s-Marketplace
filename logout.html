@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Logout</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f8e9;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    .message {
+      background-color: white;
+      border-radius: 10px;
+      padding: 40px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #2e7d32;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      color: #2e7d32;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 10px 20px;
+      border: 1px solid #2e7d32;
+      border-radius: 5px;
+    }
+
+    a:hover {
+      background-color: #2e7d32;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="message">
+    <h2>You have been successfully logged out.</h2>
+    <a href="LocalFarmerMarketplace.html">Go to Signup / Login</a>
+  </div>
+
+  <script>
+    // Clear only specific farmer data
+    localStorage.removeItem("farmerProfile");
+    // You can also remove other related keys if needed:
+    // localStorage.removeItem("farmerOrders");
+    // localStorage.removeItem("farmerProducts");
+  </script>
+
+</body>
+</html>

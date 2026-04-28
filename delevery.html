@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Delivery Status - Farmer Panel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fffde7;
+      margin: 0;
+    }
+
+    header {
+      background-color: #f57f17;
+      color: white;
+      text-align: center;
+      padding: 15px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    h2 {
+      color: #f57f17;
+      text-align: center;
+    }
+
+    .order {
+      border: 1px solid #ccc;
+      padding: 15px;
+      border-left: 5px solid #fbc02d;
+      margin: 15px 0;
+      border-radius: 8px;
+      background-color: #fffde7;
+    }
+
+    .order h3 {
+      margin: 0;
+      color: #e65100;
+    }
+
+    .order p {
+      margin: 5px 0;
+    }
+
+    button {
+      padding: 8px 15px;
+      background-color: #43a047;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #2e7d32;
+    }
+
+    .no-orders {
+      text-align: center;
+      font-size: 18px;
+      color: #888;
+    }
+
+    a.back {
+      display: block;
+      text-align: center;
+      margin-top: 25px;
+      color: #f57f17;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Delivery Status</h1>
+  </header>
+
+  <div class="container">
+    <h2>Pending Deliveries</h2>
+    <div id="deliveryList"></div>
+    <a class="back" href="FarmerViewPage.html">← Back to Home</a>
+  </div>
+
+  <script>
+    const orders = JSON.parse(localStorage.getItem("farmerOrders")) || [];
+
+    const deliveryList = document.getElementById("deliveryList");
+
+    const pendingOrders = orders.filter(order => order.status === "Pending");
+
+    if (pendingOrders.length === 0) {
+      deliveryList.innerHTML = `<p class="no-orders">No pending deliveries.</p>`;
+    } else {
+      pendingOrders.forEach((order, index) => {
+        const amount = order.quantity * order.pricePerUnit;
+
+        const orderDiv = document.createElement("div");
+        orderDiv.className = "order";
+        orderDiv.innerHTML = `
+          <h3>Order #${order.orderId}</h3>
+          <p><strong>Product:</strong> ${order.product}</p>
+          <p><strong>Quantity:</strong> ${order.quantity}</p>
+          <p><strong>Price per Unit:</strong> ₹${order.pricePerUnit}</p>
+          <p><strong>Total Amount:</strong> ₹${amount}</p>
+          <button onclick="markAsDelivered(${index})">Mark as Delivered</button>
+        `;
+        deliveryList.appendChild(orderDiv);
+      });
+    }
+
+    function markAsDelivered(pendingIndex) {
+      // Find actual index in full orders array
+      const pendingOrder = pendingOrders[pendingIndex];
+      const allOrders = JSON.parse(localStorage.getItem("farmerOrders")) || [];
+      const targetIndex = allOrders.findIndex(o => o.orderId === pendingOrder.orderId);
+
+      if (targetIndex !== -1) {
+        allOrders[targetIndex].status = "Delivered";
+        localStorage.setItem("farmerOrders", JSON.stringify(allOrders));
+        alert(`Order #${pendingOrder.orderId} marked as Delivered ✅`);
+        location.reload(); // Refresh to update the list
+      }
+    }
+  </script>
+
+</body>
+</html>

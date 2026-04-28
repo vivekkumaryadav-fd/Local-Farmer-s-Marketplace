@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Farmer's Market</title>
+    <style>body { font-family: Arial, sans-serif; background-color: #fff; margin: 0; padding: 0; }
+    nav { background-color: #4CAF50; padding: 10px; }
+    nav a { color: white; margin: 0 10px; text-decoration: none; font-weight: bold; }
+    section { padding: 20px; display: none; }
+    section.active { display: block; }
+    form, .card, .review, .cart-item { background: #f9f9f9; padding: 15px; margin-bottom: 15px; border-radius: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+    button, input, select, textarea { padding: 8px; width: 100%; margin-top: 10px; border-radius: 5px; border: 1px solid #ccc; }
+    h2 { color: #4CAF50; }
+    .rating { color: goldenrod;}
+        body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #2c6f2c;
+    }
+    .section {
+      margin: 30px 0;
+    }
+    .section h2 {
+      border-bottom: 2px solid #2c6f2c;
+      padding-bottom: 8px;
+      color: #2c6f2c;
+    }
+    .items {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .item {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+      width: 180px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .item img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+    .item-name {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #333;
+    }
+    .item-price {
+      color: #27ae60;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .item button {
+      background: #2c6f2c;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    #searchBar {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .cart-link {
+      text-align: right;
+      margin-bottom: 20px;
+    }
+    .cart-link a {
+      text-decoration: none;
+      color: white;
+      background: #2c6f2c;
+      padding: 10px 15px;
+      border-radius: 5px;
+    }
+    footer {
+      background-color: green;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    
+  </style>
+    </style>
+</head>
+<body><div style="display: flex; align-items: center;">
+    <img src="logo.png" alt="logo" width="90"> 
+    <h4 style="margin-left: 10px;">
+        <strong style="color: green;">स्थानीय किसान बाज़ार</strong>
+        <p>Farm to Fork Made Simple.</p> 
+    </h4>
+</div>
+    <nav>
+    <a href="mainfarmer.html" onclick="showPage('home')">Home🏠</a>
+    <a href="about.html" onclick="showPage('about')">About 🙋‍♂️</a>
+    <a href="HowitsWork.html" onclick="showPage('how')">How It Works🧭</a>
+    <a href="Contact.html" onclick="showPage('contact')">Contact📞</a>
+    <a href="Item.html" onclick="showPage('items')">Search Products🔍🥦</a>
+    <a href="cart.html">Go to Cart🛒 </a>
+    <a href="RatingPage.html" onclick="showPage('rate')">Rate & Review⭐</a>
+    <a href="customerlogout.html" onclick="showpage('logout')">Logout🔓</a>  
+</nav>
+<div class="marquee-container">
+  <p class="marquee-text">बीज किसान बोतें हैं, लेकिन फसल तभी खिलती है जब आप उसे अपनाते हैं। स्थानीय किसान बाज़ार में शामिल होने के लिए धन्यवाद !! The farmer sows the seeds, but the crop blooms only when you cultivate it. Thanks for joining the local farmer's market!!</p>
+</div>
+<style>
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+  background-color: #e0ffe0;
+  padding: 5px 0;
+}
+
+.marquee-text {
+  display: inline-block;
+  white-space: nowrap;
+  padding-left: 100%;
+  animation: marqueeAnim 20s linear infinite;
+  font-size: 20px;
+  color: green;
+  font-weight: bold;
+}
+
+@keyframes marqueeAnim {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+</style>
+
+<section id="home" class="active">
+    <h2>Welcome To Local Farmer's Marketplace</h2>
+    <p>We are here to help you get fresh and healthy food directly from nearby farmers. You can buy vegetables, fruits, milk, and more - all grown with love and care. This way, you support local farmers and get better food for your family. It's simple, honest, and good for everyone. Start shopping today and enjoy fresh food straight from your farm to your home!! </p>
+</section> 
+
+
+<section id="about" class="active">
+    
+     <h2>About Local Farmer's Marketplace</h2>
+    <p>
+        Local Farmer's Marketplace is a digital platform designed to connect local farmers directly with consumers. Our mission is to empower farmers by providing them with a space to sell fresh produce while giving customers access to healthy, organic, and locally grown food. We believe in supporting sustainable agriculture and reducing the gap between producers and consumers.
+    </p>
+    <p>
+        With easy-to-use interfaces for both farmers and customers, the platform ensures transparency, fair pricing, and convenience. Join us in building a healthy and self-sustaining community!
+    </p>
+</section>
+
+<section id="how" class="active">
+    <h2>How It Works</h2>
+    <div class="steps">
+        <div class="step">
+            <h3>1. Farmers Register</h3>
+            <p>Local farmers create an account and list their fresh produce and goods on the platform.</p>
+        </div>
+        <div class="step">
+            <h3>2. Customers Browse</h3>
+            <p>Customers visit the site, browse by category or search directly for fruits, vegetables, dairy, and more.</p>
+        </div>
+        <div class="step">
+            <h3>3. Add to Cart & Checkout</h3>
+            <p>Customers add items to their cart, select delivery or pickup options, and proceed to payment securely.</p>
+        </div>
+        <div class="step">
+            <h3>4. Choose Delivery And Pickup</h3>
+            <p>Select home delivery or nearby pickup option for your order.</p>
+        </div>
+        <div class="step">
+            <h3>5. Make payment</h3>
+            <p>Pay securely online through our payment page.</p>
+        </div>
+        <div class="step">
+            <h3>6. Farmers Deliver</h3>
+            <p>Farmers receive order notifications and deliver or prepare orders for customer pickup.</p>
+        </div>
+          <div class="step">
+            <h3>7. Rate And Review</h3>
+            <p>After delivery, customers can give feedback and rate the products.</p>
+        </div>
+         </div>
+</section>
+
+<section id="item" class="active">
+    <h2>🥦Our Fresh Products</h2>
+    <p>At Local Farmer’s Marketplace, we offer a wide variety of fresh and natural products directly from trusted local farmers.</p>
+    <p>All items are handpicked and grown with care, ensuring top quality and great taste. Whether you're looking for seasonal vegetables, juicy fruits, or fresh dairy items, you'll find everything you need here — straight from the farm to your kitchen.</p>
+   
+</section> 
+  <div class="section" id="vegetables">
+    <h2> 🥦Vegetables</h2><p>We bring you fresh, healthy vegetables grown by local farmers. From green leafy vegetables to root crops, everything is picked at the right time to keep its taste and nutrition. No harmful chemicals – just pure, natural goodness for your kitchen.</p>
+
+    <div class="items">
+      <div class="item">
+        <img src="tomato.png" alt="Tomato" />
+        <div class="item-name">Tomato</div>
+        <div class="item-price">₹40 / kg</div>
+        <button onclick="addToCart('Tomato')">Add to Cart</button>
+      </div>
+      <div class="item">
+        <img src="carrot.png" alt="Carrot" />
+        <div class="item-name">Carrot</div>
+        <div class="item-price">₹30 / kg</div>
+        <button onclick="addToCart('Carrot')">Add to Cart</button>
+      </div>
+      <div class="item">
+        <img src="spinach.png" alt="Spinach" />
+        <div class="item-name">Spinach</div>
+        <div class="item-price">₹20 / bunch</div>
+        <button onclick="addToCart('Spinach')">Add to Cart</button>
+      </div>
+      <div class="item">
+        <img src="potato.png" alt="Potato" />
+        <div class="item-name">Potato</div>
+        <div class="item-price">₹25 / kg</div>
+        <button onclick="addToCart('Potato')">Add to Cart</button>
+      </div>
+      <div class="item">
+        <img src="ladyfinger.png" alt="Ladyfinger" />
+        <div class="item-name">Ladyfinger</div>
+        <div class="item-price">₹60 / kg</div>
+        <button onclick="addToCart('Ladyfinger')">Add to Cart</button>
+      </div>
+       <div class="item">
+        <img src="onion.png" alt="Onion" />
+        <div class="item-name">Onion</div>
+        <div class="item-price">₹30 / kg</div>
+        <button onclick="addToCart('Onion')">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="fruits">
+   <h2>🍎 Fruits</h2>
+<p>Enjoy seasonal and juicy fruits directly from farms. Whether it’s apples, bananas, mangoes, or berries – our fruits are handpicked and delivered fresh to your doorstep.</p>
+<p> Sweet, fresh, and full of vitamins – perfect for your daily health.</p>
+
+    <div class="items">
+      <div class="item">
+        <img src="apple.png" alt="Apple" />
+        <div class="item-name">Apple</div>
+        <div class="item-price">₹120 / kg</div>
+        <button onclick="addToCart('Apple')">Add to Cart</button>
+      </div>
+      <div class="item">
+        <img src="banana.png" alt="Banana" />
+        <div class="item-name">Banana</div>
+        <div class="item-price">₹50 / dozen</div>
+        <button onclick="addToCart('Banana')">Add to Cart</button>
+      </div>
+      <div class="item">
+        <img src="mango.png" alt="Mango" />
+        <div class="item-name">Mango</div>
+        <div class="item-price">₹80 / kg</div>
+        <button onclick="addToCart('Mango')">Add to Cart</button>
+      </div>
+      <div class="item">
+        <img src="cherry.png" alt="Cherry" />
+        <div class="item-name">Cherry</div>
+        <div class="item-price">₹80 / kg</div>
+        <button onclick="addToCart('Cherry')">Add to Cart</button>
+      </div>
+      <div class="item">
+        <img src="papaya.png" alt="Papaya" />
+        <div class="item-name">Papaya</div>
+        <div class="item-price">₹20 / 1 piece</div>
+        <button onclick="addToCart('Papaya')">Add to Cart</button>
+      </div>
+      <div class="item">
+        <img src="amrood.png" alt="Guava" />
+        <div class="item-name">Guava</div>
+        <div class="item-price">₹25 / kg</div>
+        <button onclick="addToCart('Guava')">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="milk">
+   <h2>🥛 Dairy Products</h2>
+<p>Get high-quality dairy products like fresh milk, homemade ghee, curd, and paneer.</p> 
+<p> Sourced directly from trusted local dairy farmers, our products are natural, clean, and rich in taste – just like you remember from the villages.</p>
+   
+    <div class="items">
+      <div class="item">
+        <img src="milk.png" alt="Milk" />
+        <div class="item-name">Fresh Milk</div>
+        <div class="item-price">₹50 / litre</div>
+        <button onclick="addToCart('Milk')">Add to Cart</button>
+      </div>
+      <div class="item">
+        <img src="paneer.png" alt="Paneer" />
+        <div class="item-name">Paneer</div>
+        <div class="item-price">₹200 / kg</div>
+        <button onclick="addToCart('Paneer')">Add to Cart</button>
+      </div>
+      <div class="item">
+        <img src="butter.png" alt="Butter" />
+        <div class="item-name">Butter</div>
+        <div class="item-price">₹150 / 250g</div>
+        <button onclick="addToCart('Butter')">Add to Cart</button>
+      </div>
+       <div class="item">
+        <img src="milk-khova.png" alt="Khoya Milk" />
+        <div class="item-name">Khoya Milk</div>
+        <div class="item-price">₹250 / kg</div>
+        <button onclick="addToCart('Khoya Milk')">Add to Cart</button>
+      </div>
+      <div class="item">
+        <img src="curd.png" alt="Curd" />
+        <div class="item-name">Curd</div>
+        <div class="item-price">₹60 / L</div>
+        <button onclick="addToCart('Curd')">Add to Cart</button>
+      </div>
+      <div class="item">
+        <img src="chanch-removebg-preview.png" alt="Buttermilk" />
+        <div class="item-name">Buttermilk</div>
+        <div class="item-price">₹20 / L</div>
+        <button onclick="addToCart('Buttermilk')">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function addToCart(item) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push(item);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert(item + " added to cart!");
+    }
+
+    function searchItems() {
+      const input = document.getElementById("searchBar").value.toLowerCase();
+      const items = document.querySelectorAll(".item");
+
+      items.forEach(item => {
+        const name = item.querySelector(".item-name").textContent.toLowerCase();
+        item.style.display = name.includes(input) ? "block" : "none";
+      });
+    }
+  </script>
+  <section id="contact" class="active">
+     <h2>Contact Us</h2>
+  <form>
+    <input type="text" placeholder="Enter Your Name" required />
+    <input type="email" placeholder="Enter Your Email" required />
+    <textarea placeholder="Enter Your Message" rows="5" required></textarea>
+    <a href="customermessage.html" type="submit">Send Message</button></a>
+  </form>
+</section>
+<div style="text-align: center; margin-top: 40px;">
+  <h1><strong>🌱 Your Voice Matters!</strong></h1>
+  <p><strong>Let us know how we did. Your feedback helps farmers and buyers connect better.</strong></p>
+  <a href="RatingPage.html">
+    <button style="background-color: #4CAF50; color: white; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">
+      🌟 Rate & Review Us
+    </button>
+  </a>
+</div>
+
+  <footer>
+  <p style="color: white;"  >&copy; 2025 Local Farmers Marketplace | All rights reserved</p>
+</footer>
+</body>
+</html>

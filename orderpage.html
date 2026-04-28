@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Farmer Orders</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f8e9;
+      margin: 0;
+    }
+
+    header {
+      background-color: #33691e;
+      color: white;
+      text-align: center;
+      padding: 15px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    h2 {
+      color: #33691e;
+      text-align: center;
+    }
+
+    .order {
+      border: 1px solid #ccc;
+      padding: 15px;
+      border-left: 5px solid #689f38;
+      margin: 15px 0;
+      border-radius: 8px;
+      background-color: #ffffff;
+    }
+
+    .order h3 {
+      margin: 0;
+      color: #558b2f;
+    }
+
+    .order p {
+      margin: 5px 0;
+    }
+
+    .pending {
+      color: #e65100;
+      font-weight: bold;
+    }
+
+    .delivered {
+      color: #2e7d32;
+      font-weight: bold;
+    }
+
+    a.back {
+      display: block;
+      text-align: center;
+      margin-top: 25px;
+      color: #33691e;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>All Orders</h1>
+  </header>
+
+  <div class="container">
+    <h2>Customer Orders (Pending + Delivered)</h2>
+    <div id="orderList"></div>
+    <a class="back" href="FarmerViewPage.html">← Back to Home</a>
+  </div>
+
+  <script>
+    // 🌟 Updated sample data with Milk product added
+    const sampleOrders = [
+      {
+        orderId: "order001",
+        product: "Tomato",
+        quantity: 10,
+        pricePerUnit: 40,
+        status: "Delivered"
+      },
+      {
+        orderId: "order002",
+        product: "Potato",
+        quantity: 5,
+        pricePerUnit: 25,
+        status: "Delivered"
+      },
+      {
+        orderId: "order003",
+        product: "Tomato",
+        quantity: 3,
+        pricePerUnit: 40,
+        status: "Pending"
+      },
+      {
+        orderId: "order004",
+        product: "Potato",
+        quantity: 6,
+        pricePerUnit: 25,
+        status: "Pending"
+      },
+      {
+        orderId: "order005",
+        product: "Milk",
+        quantity: 2,
+        pricePerUnit: 50,
+        status: "Delivered"
+      }
+    ];
+
+    // 🧹 Overwrite for fresh testing (optional)
+    localStorage.setItem("farmerOrders", JSON.stringify(sampleOrders));
+
+    const allOrders = JSON.parse(localStorage.getItem("farmerOrders")) || [];
+    const orderList = document.getElementById("orderList");
+
+    allOrders.forEach(order => {
+      const amount = order.quantity * order.pricePerUnit;
+      const statusClass = order.status === "Delivered" ? "delivered" : "pending";
+
+      orderList.innerHTML += `
+        <div class="order">
+          <h3>Order #${order.orderId}</h3>
+          <p><strong>Product:</strong> ${order.product}</p>
+          <p><strong>Quantity:</strong> ${order.quantity}</p>
+          <p><strong>Price per Unit:</strong> ₹${order.pricePerUnit}</p>
+          <p><strong>Total Amount:</strong> ₹${amount}</p>
+          <p><strong>Status:</strong> <span class="${statusClass}">${order.status}</span></p>
+        </div>
+      `;
+    });
+  </script>
+
+</body>
+</html>

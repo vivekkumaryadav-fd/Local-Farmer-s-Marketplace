@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ratings & Reviews - Local Farmer's Marketplace</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      padding: 20px;
+    }
+    h2, h3 {
+      color: #4CAF50;
+    }
+    .review {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+    }
+    .rating {
+      color: goldenrod;
+      font-weight: bold;
+    }
+    textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .message {
+      color: green;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+     <a href="FarmerViewPage.html" style="background-color: #4CAF50; color: white; padding: 10px 16px; border: none; border-radius: 5px; font-size: 14px; text-decoration: none; display: inline-block;">
+    ⬅️ Back to Home
+  </a>
+  <h2>Rate Your Experience</h2>
+  <form id="reviewForm">
+    <label>Are you a:</label>
+    <select id="userType" required>
+      <option value="">--Select--</option>
+      <option value="customer">Customer</option>
+      <option value="farmer">Farmer</option>
+    </select>
+
+    <label>Rating</label>
+    <select id="rating" required>
+      <option value="">--Select--</option>
+      <option value="5">★★★★★</option>
+      <option value="4">★★★★☆</option>
+      <option value="3">★★★☆☆</option>
+      <option value="2">★★☆☆☆</option>
+      <option value="1">★☆☆☆☆</option>
+    </select>
+
+    <label>Review</label>
+    <textarea id="reviewText" placeholder="Write your review here..." rows="4" required></textarea>
+
+    <button type="submit">Submit</button>
+    <div class="message" id="thankYouMessage"></div>
+  </form>
+
+  <h3>Customer Reviews</h3>
+  <div id="customerReviews">
+    <div class="review">
+      <div class="rating">★★★★★</div>
+      <p>Excellent quality vegetables and on-time delivery!</p>
+    </div>
+    <div class="review">
+      <div class="rating">★★★★☆</div>
+      <p>Great fruits but delivery took a bit long.</p>
+    </div>
+  </div>
+
+  <h3>Farmer Reviews</h3>
+  <div id="farmerReviews">
+    <div class="review">
+      <div class="rating">★★★★★</div>
+      <p>Happy to sell directly and get fair prices. Great platform!</p>
+    </div>
+    <div class="review">
+      <div class="rating">★★★★☆</div>
+      <p>Good experience overall, but payment processing can be faster.</p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("reviewForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const userType = document.getElementById("userType").value;
+      const rating = document.getElementById("rating").value;
+      const text = document.getElementById("reviewText").value;
+      const message = document.getElementById("thankYouMessage");
+
+      if (userType && rating && text) {
+        const reviewDiv = document.createElement("div");
+        reviewDiv.className = "review";
+        reviewDiv.innerHTML = `<div class="rating">${"★".repeat(rating)}${"☆".repeat(5 - rating)}</div><p>${text}</p>`;
+
+        if (userType === "customer") {
+          document.getElementById("customerReviews").prepend(reviewDiv);
+        } else if (userType === "farmer") {
+          document.getElementById("farmerReviews").prepend(reviewDiv);
+        }
+
+        message.textContent = "Thank you for your feedback!";
+        document.getElementById("reviewForm").reset();
+        setTimeout(() => message.textContent = "", 3000);
+      }
+    });
+  </script>
+</body>
+</html>

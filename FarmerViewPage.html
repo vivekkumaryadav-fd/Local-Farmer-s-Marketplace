@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Farmer Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0fdf4;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #2e7d32;
+      color: white;
+      padding: 5px;
+      text-align: center;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .card {
+      background-color: #ffffff;
+      border-left: 6px solid #4caf50;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    .card p {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #2e7d32;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      padding: 10px;
+      background: #e8f5e9;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #2e7d32;
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #c8e6c9;
+    }
+     footer {
+      background-color: green;
+      text-align: center;
+      padding: 20px;
+      margin-top: 230px;
+    }
+  </style>
+</head>
+<body>
+  <body><div style="display: flex; align-items: center;">
+    <img src="logo.png" alt="logo" width="90"> 
+    <h4 style="margin-left: 10px;">
+        <strong style="color: green;">स्थानीय किसान बाज़ार</strong>
+        <p>Farm to Fork Made Simple.</p>    
+    </h4>
+</div>
+<header>
+    <h1>Welcome, Farmer 👨‍🌾</h1>
+  </header>
+  <nav>
+    <a href="FarmerViewPage.html">Home🏡</a>
+    <a href="farmworking.html">How Its work🧭</a>
+    <a href="addproduct.html">Add Product➕</a>
+    <a href="myproduct.html">My Products🌾</a>
+    <a href="orderpage.html">Orders📃</a>
+    <a href="delevery.html">Delivery Status🚚</a>
+    <a href="earning.html">Earning💰</a>
+    <a href="farmrating.html">Rate & Review⭐</a>
+    <a href="logout.html">Logout🔓</a>
+  </nav>
+<marquee behavior="scroll" direction="left" scrollamount="6" style="background-color: #e8f5e9; padding: 12px; font-size: 18px; color: #2e7d32; font-weight: bold;">
+  स्थानीय किसान बाज़ार में आपका स्वागत है। यहाँ आप केवल किसान नहीं, बल्कि अपने उत्पादों के स्वामी हैं। कमाइए गर्व से!  Welcome to the local farmer's market. Here you are not just a farmer, but the owner of your produce. Earn with pride!
+</marquee>
+
+  <div class="dashboard">
+    <div class="card">
+      <h3>Total Products</h3>
+      <p>10</p>
+    </div>
+    <div class="card">
+      <h3>Pending Orders</h3>
+      <p>2</p>
+    </div>
+    <div class="card">
+      <h3>Delivered Orders</h3>
+      <p>20</p>
+    </div>
+    <div class="card">
+      <h3>Total Earnings</h3>
+      <p>₹3,450</p>
+    </div>
+  </div>
+   <footer>
+  <p style="color: white;"  >&copy; 2025 Local Farmers Marketplace | All rights reserved</p>
+</footer>
+</body>
+</html>

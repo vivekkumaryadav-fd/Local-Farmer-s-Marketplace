@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add Product - Farmer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f8e9;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #388e3c;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #2e7d32;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+
+    button {
+      margin-top: 20px;
+      background-color: #4caf50;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      width: 100%;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .message {
+      margin-top: 20px;
+      padding: 10px;
+      color: green;
+      background-color: #e8f5e9;
+      border-left: 4px solid #388e3c;
+      display: none;
+    }
+
+    a.back {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: #2e7d32;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Add New Product</h1>
+  </header>
+
+  <div class="container">
+    <h2>Product Details</h2>
+    <form id="productForm">
+      <label for="productName">Product Name</label>
+      <input type="text" id="productName" required>
+
+      <label for="description">Description</label>
+      <textarea id="description" rows="4" required></textarea>
+
+      <label for="category">Category</label>
+      <select id="category" required>
+        <option value="">Select</option>
+        <option value="Vegetables">Vegetables</option>
+        <option value="Fruits">Fruits</option>
+        <option value="Milk">Milk</option>
+        <option value="Grains">Grains</option>
+      </select>
+
+      <label for="price">Price (₹)</label>
+      <input type="number" id="price" required>
+
+      <label for="quantity">Quantity</label>
+      <input type="number" id="quantity" required>
+
+      <button type="submit">Add Product</button>
+
+      <div class="message" id="successMessage">✅ Product added successfully!</div>
+    </form>
+
+    <a class="back" href="myproduct.html">→ Go to My Products</a>
+  </div>
+
+  <script>
+    document.getElementById("productForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const product = {
+        name: document.getElementById("productName").value,
+        description: document.getElementById("description").value,
+        category: document.getElementById("category").value,
+        price: document.getElementById("price").value,
+        quantity: document.getElementById("quantity").value,
+        addedAt: new Date().toLocaleString()
+      };
+
+      let products = JSON.parse(localStorage.getItem("farmerProducts")) || [];
+      products.push(product);
+      localStorage.setItem("farmerProducts", JSON.stringify(products));
+
+      document.getElementById("successMessage").style.display = "block";
+      document.getElementById("productForm").reset();
+    });
+  </script>
+
+</body>
+</html>

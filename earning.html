@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Farmer Earnings</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e8f5e9;
+      margin: 0;
+    }
+
+    header {
+      background-color: #2e7d32;
+      color: white;
+      text-align: center;
+      padding: 15px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    h2 {
+      color: #2e7d32;
+      text-align: center;
+    }
+
+    .order {
+      border: 1px solid #ccc;
+      padding: 15px;
+      border-left: 5px solid #4caf50;
+      margin: 15px 0;
+      border-radius: 8px;
+      background-color: #fbfff7;
+    }
+
+    .order h3 {
+      margin: 0;
+      color: #33691e;
+    }
+
+    .order p {
+      margin: 5px 0;
+    }
+
+    .total {
+      font-size: 20px;
+      color: #1b5e20;
+      font-weight: bold;
+      text-align: right;
+      margin-top: 20px;
+    }
+
+    a.back {
+      display: block;
+      text-align: center;
+      margin-top: 25px;
+      color: #2e7d32;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>My Earnings</h1>
+  </header>
+
+  <div class="container">
+    <h2>Delivered Orders</h2>
+    <div id="earningList"></div>
+    <div class="total" id="totalEarnings">Total Earnings: ₹0</div>
+    <a class="back" href="FarmerViewPage.html">← Back to Home</a>
+  </div>
+
+  <script>
+   
+    if (!localStorage.getItem("farmerOrders")) {
+      const sampleOrders = [
+        {
+          orderId: "order001",
+          product: "Tomato",
+          quantity: 10,
+          pricePerUnit: 40,
+          status: "Delivered"
+        },
+        {
+          orderId: "order002",
+          product: "Potato",
+          quantity: 5,
+          pricePerUnit: 25,
+          status: "Delivered"
+        },
+        {
+          orderId: "order003",
+          product: "Tomato",
+          quantity: 3,
+          pricePerUnit: 40,
+          status: "Pending"
+        }
+      ];
+      localStorage.setItem("farmerOrders", JSON.stringify(sampleOrders));
+    }
+
+
+    const allOrders = JSON.parse(localStorage.getItem("farmerOrders")) || [];
+
+    const earningList = document.getElementById("earningList");
+    const totalEarnings = document.getElementById("totalEarnings");
+
+    let total = 0;
+
+    const deliveredOrders = allOrders.filter(order => order.status === "Delivered");
+
+    deliveredOrders.forEach(order => {
+      const amount = order.quantity * order.pricePerUnit;
+      total += amount;
+
+      earningList.innerHTML += `
+        <div class="order">
+          <h3>Order #${order.orderId}</h3>
+          <p><strong>Product:</strong> ${order.product}</p>
+          <p><strong>Quantity:</strong> ${order.quantity}</p>
+          <p><strong>Price per Unit:</strong> ₹${order.pricePerUnit}</p>
+          <p><strong>Total Amount:</strong> ₹${amount}</p>
+          <p><strong>Status:</strong> ${order.status}</p>
+        </div>
+      `;
+    });
+
+    totalEarnings.textContent = `Total Earnings: ₹${total}`;
+  </script>
+
+</body>
+</html>
